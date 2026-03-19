@@ -29,11 +29,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Mobile par upar se start ho */
+            justify-content: flex-start;
             min-height: 100vh;
             padding: 10px;
             text-align: center;
-            padding-bottom: 70px; /* Ad ke liye space */
+            padding-bottom: 70px; 
         }
 
         #fireworksCanvas {
@@ -49,23 +49,21 @@
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
             max-width: 450px; width: 95%;
             position: relative; z-index: 10;
-            margin-top: 5px; /* Thoda gap upar se */
+            margin-top: 10px;
         }
 
-        /* --- Image Size Optimized --- */
         #eidImage { 
             width: 100%; 
-            max-width: 160px; /* Mobile par chhota rakha hai */
+            max-width: 160px; 
             border-radius: 8px; 
             border: 2px solid var(--golden); 
             margin-bottom: 10px; 
         }
 
-        /* --- Heading Size Optimized --- */
         #mainHeading { 
             font-family: 'Satisfy', cursive; 
             color: var(--golden-heading); 
-            font-size: 2rem; /* Size reduced */
+            font-size: 2rem;
             margin-bottom: 5px; 
             text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
         }
@@ -77,9 +75,8 @@
             font-weight: 600;
         }
 
-        /* Continuous Animated Line Optimized */
         #familyWishingMessage {
-            font-size: 0.95rem; /* Text size reduced for mobile */
+            font-size: 0.95rem; 
             font-weight: 600; 
             color: #7bff00; 
             margin: 10px 0; 
@@ -93,21 +90,12 @@
             50% { transform: scale(1.05); color: #fff; text-shadow: 0 0 15px rgba(124, 255, 0, 0.7); }
         }
 
-        /* Fixed Ad Container */
         .ad-bottom-fixed {
             position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
             background: rgba(0, 0, 0, 0.9); display: flex; justify-content: center;
             align-items: center; z-index: 99999; border-top: 1px solid var(--golden);
         }
 
-        /* Music Button Positioning */
-        #musicToggleButton {
-            position: absolute; top: 0; right: 0; transform: translateY(-30px);
-            width: 34px; height: 34px; border-radius: 50%; background: var(--golden);
-            border: 2px solid var(--golden-heading); cursor: pointer; z-index: 20; 
-        }
-
-        /* Form Elements Compact */
         #senderSection { margin-top: 5px; }
         label { font-size: 0.85rem; margin-bottom: 4px; display: block; }
         input[type="text"] { 
@@ -117,13 +105,14 @@
             border-radius: 6px; 
             font-size: 0.9rem;
             border: 1px solid var(--input-border);
+            color: var(--button-text-green);
         }
         
-        button:not(#musicToggleButton) { 
+        button { 
             background: linear-gradient(145deg, var(--golden), #a2ff00); 
             color: var(--button-text-green); 
             border: none; 
-            padding: 10px; 
+            padding: 12px; 
             border-radius: 6px; 
             font-weight: bold; 
             cursor: pointer; 
@@ -133,7 +122,6 @@
 
         #shareSection { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--golden); }
 
-        /* Animations */
         .main-heading-animate { animation: mainHeadingAnim 1s forwards; }
         @keyframes mainHeadingAnim { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         
@@ -154,8 +142,7 @@
         <p id="fromSender" style="display:none;"></p>
         <p id="familyWishingMessage">Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr!</p>
 
-        <div id="senderSection" style="position:relative;">
-            <button id="musicToggleButton">🔈</button>
+        <div id="senderSection">
             <label>Your Name:</label>
             <input type="text" id="senderName" placeholder="Enter your name">
             <button id="createShareButton">Create & Share Greeting</button>
@@ -177,9 +164,10 @@
         <script type="text/javascript" src="https://www.highperformanceformat.com/501f153248c74c09ae2d7bf728d506c2/invoke.js"></script>
     </div>
 
-    <audio id="backgroundSong" src="song.mp3" loop hidden></audio> 
+    <audio id="backgroundSong" src="song.mp3" loop></audio> 
     
     <script>
+        const backgroundSong = document.getElementById('backgroundSong');
         const mainHeadingEl = document.getElementById('mainHeading');
         const fromSenderText = document.getElementById('fromSender');
         const senderNameInput = document.getElementById('senderName');
@@ -187,8 +175,19 @@
         const shareSection = document.getElementById('shareSection');
         const generatedLinkInput = document.getElementById('generatedLink');
         const copyButton = document.getElementById('copyButton');
-        const musicToggleButton = document.getElementById('musicToggleButton'); 
-        const backgroundSong = document.getElementById('backgroundSong');
+
+        // Logic to start audio on the first tap anywhere on screen
+        const startMusic = () => {
+            backgroundSong.play().then(() => {
+                console.log("Audio started automatically");
+                // Ek baar bajne ke baad event hata dete hain
+                document.removeEventListener('click', startMusic);
+                document.removeEventListener('touchstart', startMusic);
+            }).catch(e => console.log("Waiting for interaction..."));
+        };
+
+        document.addEventListener('click', startMusic);
+        document.addEventListener('touchstart', startMusic);
 
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -199,14 +198,6 @@
                 fromSenderText.style.display = 'block';
             }
             initFireworks();
-        });
-
-        musicToggleButton.addEventListener('click', () => {
-            if (backgroundSong.paused) {
-                backgroundSong.play().then(() => { musicToggleButton.innerHTML = '🔊'; }).catch(e => console.log("User must interact first"));
-            } else {
-                backgroundSong.pause(); musicToggleButton.innerHTML = '🔈';
-            }
         });
 
         createShareButton.addEventListener('click', () => {
@@ -225,7 +216,6 @@
             setTimeout(() => copyButton.textContent = 'Copy', 2000);
         });
 
-        // Optimized Fireworks for performance
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -240,7 +230,7 @@
         }
         function animate() {
             requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Mobile performance
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p,i) => {
                 p.x+=p.vx; p.y+=p.vy; p.a-=0.015;
                 ctx.globalAlpha=p.a; ctx.fillStyle=p.c;
