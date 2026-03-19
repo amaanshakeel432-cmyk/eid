@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌙 Eid-ul-Fitr Mubarak! ✨</title>
-    <!-- Fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&family=Satisfy&display=swap" rel="stylesheet">
@@ -33,7 +32,7 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 10px;
+            padding: 8px;
             text-align: center;
             padding-bottom: 70px; 
         }
@@ -47,52 +46,81 @@
             background: rgba(10, 40, 10, 0.85);
             border: 2px solid var(--golden);
             border-radius: 15px;
-            padding: 15px 20px;
+            padding: 12px 15px;
             box-shadow: 0 0 25px rgba(123, 255, 0, 0.3);
             max-width: 450px; width: 95%;
             position: relative; z-index: 10;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         #eidImage { 
-            width: 100%; 
-            max-width: 140px; 
-            border-radius: 10px; 
-            border: 2px solid var(--golden); 
-            margin-bottom: 8px; 
-            box-shadow: 0 0 15px rgba(123, 255, 0, 0.4);
+            width: 100%; max-width: 120px; border-radius: 10px; 
+            border: 2px solid var(--golden); margin-bottom: 5px; 
         }
 
         #mainHeading { 
-            font-family: 'Satisfy', cursive; 
-            color: var(--golden-heading); 
-            font-size: 2.2rem;
-            margin-bottom: 2px; 
+            font-family: 'Satisfy', cursive; color: var(--golden-heading); 
+            font-size: 7.5vw; white-space: nowrap; margin-bottom: 2px;
             text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
         }
 
         #fromSender { 
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.6rem; 
-            color: var(--golden); 
-            margin-bottom: 8px; 
-            text-shadow: 1px 1px 2px black;
+            font-family: 'Great Vibes', cursive; font-size: 1.5rem; 
+            color: var(--golden); margin-bottom: 5px; 
         }
 
         #familyWishingMessage {
-            font-size: 1rem; 
-            font-weight: 700; 
-            color: #7bff00; 
-            margin: 10px 0; 
-            line-height: 1.4; 
-            display: block;
-            animation: continuousGlow 2.5s infinite ease-in-out;
+            font-size: 0.85rem; font-weight: 700; color: #7bff00; 
+            margin-bottom: 8px; line-height: 1.3;
         }
 
-        @keyframes continuousGlow {
-            0%, 100% { transform: scale(1); text-shadow: 0 0 5px rgba(123, 255, 0, 0.4); }
-            50% { transform: scale(1.05); color: #fff; text-shadow: 0 0 15px rgba(124, 255, 0, 0.8); }
+        /* --- DUA SLIDER STYLING --- */
+        .dua-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--golden);
+            border-radius: 10px;
+            height: 85px; /* Fixed height to prevent layout shifting */
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        .dua-slide {
+            position: absolute;
+            width: 100%;
+            padding: 5px 10px;
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
+            transform: translateY(10px);
+        }
+
+        .dua-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dua-emoji { font-size: 1.5rem; display: block; margin-bottom: 3px; }
+        .dua-text { font-size: 0.85rem; font-style: italic; color: #fff; line-height: 1.2; }
+
+        /* --- FORM STYLING --- */
+        input[type="text"] { 
+            width: 100%; padding: 10px; margin-bottom: 8px; 
+            border-radius: 8px; border: 2px solid var(--golden);
+            background: var(--input-bg); text-align: center; font-weight: bold;
+            color: var(--button-text-green); font-size: 0.9rem;
+        }
+        
+        button { 
+            background: linear-gradient(145deg, var(--golden), #a2ff00); 
+            color: var(--button-text-green); border: none; padding: 12px; 
+            border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%;
+            font-size: 0.95rem; text-transform: uppercase;
+        }
+
+        #shareSection { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--golden); }
 
         .ad-bottom-fixed {
             position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
@@ -100,50 +128,11 @@
             align-items: center; z-index: 99999; border-top: 1px solid var(--golden);
         }
 
-        label { font-size: 0.8rem; margin-bottom: 4px; display: block; font-weight: bold; }
-        
-        input[type="text"] { 
-            width: 100%; 
-            padding: 10px; 
-            margin-bottom: 10px; 
-            border-radius: 8px; 
-            font-size: 0.9rem;
-            border: 2px solid var(--golden);
-            background: var(--input-bg);
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        button { 
-            background: linear-gradient(145deg, var(--golden), #a2ff00); 
-            color: var(--button-text-green); 
-            border: none; 
-            padding: 12px; 
-            border-radius: 8px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            width: 100%;
-            font-size: 1rem;
-            text-transform: uppercase;
-            box-shadow: 0 4px 0 #4e8a00;
-        }
-        button:active { transform: translateY(2px); box-shadow: 0 2px 0 #4e8a00; }
-
-        #shareSection { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--golden); }
-
-        /* Animations */
-        .main-heading-animate { animation: bounceIn 1.2s ease-out; }
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        @media (min-width: 600px) {
-            #eidImage { max-width: 180px; }
-            #mainHeading { font-size: 3rem; }
-            #familyWishingMessage { font-size: 1.2rem; }
+        @media (min-width: 480px) {
+            #mainHeading { font-size: 2.2rem; }
+            #eidImage { max-width: 150px; }
+            .dua-box { height: 100px; }
+            .dua-text { font-size: 1rem; }
         }
     </style>
 </head>
@@ -154,10 +143,31 @@
         <img id="eidImage" src="eid.gif" alt="Eid Mubarak">
         <h1 id="mainHeading">🌙 Eid Mubarak ✨</h1>
         <p id="fromSender" style="display:none;"></p>
-        <p id="familyWishingMessage">🎊 Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr! 🕌🤲⭐</p>
+        <p id="familyWishingMessage">🎊 Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr! 🕌</p>
+
+        <!-- AUTOMATIC DUA SLIDER START -->
+        <div class="dua-box">
+            <div class="dua-slide active">
+                <span class="dua-emoji">🤲</span>
+                <p class="dua-text">"May Allah shower His countless blessings upon you and your family."</p>
+            </div>
+            <div class="dua-slide">
+                <span class="dua-emoji">✨</span>
+                <p class="dua-text">"May this Eid bring joy, peace, and prosperity to your beautiful life."</p>
+            </div>
+            <div class="dua-slide">
+                <span class="dua-emoji">🌙</span>
+                <p class="dua-text">"May your heart be filled with faith and your home with happiness."</p>
+            </div>
+            <div class="dua-slide">
+                <span class="dua-emoji">⭐</span>
+                <p class="dua-text">"May Allah accept your good deeds and forgive all your transgressions."</p>
+            </div>
+        </div>
+        <!-- AUTOMATIC DUA SLIDER END -->
 
         <div id="senderSection">
-            <label>✍️ ENTER YOUR NAME BELOW:</label>
+            <label style="font-size: 0.75rem; display:block; margin-bottom:4px; font-weight:bold;">✍️ ENTER YOUR NAME BELOW:</label>
             <input type="text" id="senderName" placeholder="Type your name here...">
             <button id="createShareButton">🚀 Create & Share Greeting</button>
         </div>
@@ -165,12 +175,11 @@
         <div id="shareSection" style="display:none;">
             <div style="display: flex; align-items: center;">
                 <input type="text" id="generatedLink" readonly style="margin-bottom:0;">
-                <button id="copyButton" style="width: 70px; margin-left: 5px; padding: 10px 0; box-shadow: none;">📋 Copy</button>
+                <button id="copyButton" style="width: 70px; margin-left: 5px; padding: 10px 0;">📋 Copy</button>
             </div>
         </div>
     </div>
 
-    <!-- ADSTERRA AD -->
     <div class="ad-bottom-fixed">
         <script type="text/javascript">
             atOptions = { 'key' : '501f153248c74c09ae2d7bf728d506c2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
@@ -192,11 +201,20 @@
         const generatedLinkInput = document.getElementById('generatedLink');
         const copyButton = document.getElementById('copyButton');
 
-        let particles = [];
+        // --- DUA SLIDER LOGIC ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.dua-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 4000); // Badalte rahen har 4 seconds mein
 
-        // Audio Auto-play Logic
+        // --- MUSIC LOGIC ---
         const startMusic = () => {
-            backgroundSong.play().catch(e => console.log("Tap to play"));
+            backgroundSong.play().catch(e => console.log("Tap needed"));
             document.removeEventListener('click', startMusic);
             document.removeEventListener('touchstart', startMusic);
         };
@@ -207,87 +225,48 @@
             const urlParams = new URLSearchParams(window.location.search);
             const sender = urlParams.get('sender');
             if (sender) {
-                mainHeadingEl.classList.add('main-heading-animate');
-                fromSenderText.innerHTML = `<span>From</span> ${decodeURIComponent(sender)} 👤`;
+                fromSenderText.innerHTML = `From ${decodeURIComponent(sender)} 👤`;
                 fromSenderText.style.display = 'block';
             }
             initAnimations();
         });
 
-        // Confetti & Fireworks Animation
+        // --- ANIMATION LOGIC (Party Poppers & Fireworks) ---
+        let particles = [];
         function initAnimations() {
-            canvas.width = window.innerWidth; 
-            canvas.height = window.innerHeight;
-            
-            // Periodically launch Party Poppers from corners
-            setInterval(() => {
-                launchPopper(0, canvas.height, 45); // Left corner
-                launchPopper(canvas.width, canvas.height, 135); // Right corner
-            }, 3000);
-
-            // Periodically launch Fireworks
-            setInterval(() => {
-                const x = Math.random() * canvas.width;
-                const y = Math.random() * (canvas.height / 3);
-                createExplosion(x, y);
-            }, 1500);
-
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            setInterval(() => { launchPopper(0, canvas.height, 45); launchPopper(canvas.width, canvas.height, 135); }, 3000);
+            setInterval(() => { createExplosion(Math.random() * canvas.width, Math.random() * (canvas.height / 3)); }, 1800);
             animate();
         }
 
         function launchPopper(x, y, baseAngle) {
-            for(let i=0; i<30; i++) {
+            for(let i=0; i<25; i++) {
                 const angle = (baseAngle + (Math.random() - 0.5) * 40) * (Math.PI / 180);
-                const speed = Math.random() * 8 + 5;
-                particles.push({
-                    x, y,
-                    vx: Math.cos(angle) * speed,
-                    vy: -Math.sin(angle) * speed,
-                    size: Math.random() * 6 + 2,
-                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
-                    type: 'confetti',
-                    life: 1
-                });
+                const speed = Math.random() * 7 + 4;
+                particles.push({ x, y, vx: Math.cos(angle)*speed, vy:-Math.sin(angle)*speed, size: Math.random()*5+2, color: `hsl(${Math.random()*360}, 100%, 50%)`, type: 'confetti', life: 1 });
             }
         }
 
         function createExplosion(x, y) {
-            for(let i=0; i<25; i++) {
-                particles.push({
-                    x, y,
-                    vx: (Math.random() - 0.5) * 6,
-                    vy: (Math.random() - 0.5) * 6,
-                    size: 2,
-                    color: '#7bff00',
-                    type: 'firework',
-                    life: 1
-                });
+            for(let i=0; i<20; i++) {
+                particles.push({ x, y, vx: (Math.random()-0.5)*5, vy: (Math.random()-0.5)*5, size: 2, color: '#7bff00', type: 'firework', life: 1 });
             }
         }
 
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if(p.type === 'confetti') p.vy += 0.2; // Gravity for confetti
+                p.x += p.vx; p.y += p.vy;
+                if(p.type === 'confetti') p.vy += 0.2;
                 p.life -= 0.01;
-
-                ctx.globalAlpha = p.life;
-                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.life; ctx.fillStyle = p.color;
                 ctx.beginPath();
-                if(p.type === 'confetti') {
-                    ctx.fillRect(p.x, p.y, p.size, p.size);
-                } else {
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
+                if(p.type === 'confetti') ctx.fillRect(p.x, p.y, p.size, p.size);
+                else { ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); }
                 if(p.life <= 0) particles.splice(i, 1);
             });
-            ctx.globalAlpha = 1;
         }
 
         createShareButton.addEventListener('click', () => {
@@ -297,14 +276,13 @@
             generatedLinkInput.value = generatedUrl;
             shareSection.style.display = 'block';
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('✨ ' + name + ' sends you a special Eid-ul-Fitr greeting! 🌙 Click here: ' + generatedUrl)}`, '_blank'); 
-            // Extra burst on click
             launchPopper(canvas.width/2, canvas.height, 90);
         });
 
         copyButton.addEventListener('click', () => {
             generatedLinkInput.select();
             document.execCommand('copy');
-            copyButton.textContent = '✅ Done!';
+            copyButton.textContent = '✅ OK';
             setTimeout(() => copyButton.textContent = '📋 Copy', 2000);
         });
     </script>
