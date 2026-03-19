@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eid-ul-Fitr Mubarak!</title>
+    <title>🌙 Eid-ul-Fitr Mubarak! ✨</title>
+    <!-- Fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&family=Satisfy&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --dark-green: #0a280a;
@@ -23,7 +25,7 @@
         html, body { height: 100%; overflow-x: hidden; }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background: radial-gradient(circle at bottom, var(--dark-green) 0%, var(--black) 70%);
             color: var(--cream-text);
             display: flex;
@@ -36,7 +38,7 @@
             padding-bottom: 70px; 
         }
 
-        #fireworksCanvas {
+        #animationCanvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1; pointer-events: none;
         }
@@ -44,9 +46,9 @@
         .container {
             background: rgba(10, 40, 10, 0.85);
             border: 2px solid var(--golden);
-            border-radius: 12px;
+            border-radius: 15px;
             padding: 15px 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 0 25px rgba(123, 255, 0, 0.3);
             max-width: 450px; width: 95%;
             position: relative; z-index: 10;
             margin-top: 10px;
@@ -54,30 +56,32 @@
 
         #eidImage { 
             width: 100%; 
-            max-width: 160px; 
-            border-radius: 8px; 
+            max-width: 140px; 
+            border-radius: 10px; 
             border: 2px solid var(--golden); 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
+            box-shadow: 0 0 15px rgba(123, 255, 0, 0.4);
         }
 
         #mainHeading { 
             font-family: 'Satisfy', cursive; 
             color: var(--golden-heading); 
-            font-size: 2rem;
-            margin-bottom: 5px; 
-            text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+            font-size: 2.2rem;
+            margin-bottom: 2px; 
+            text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
         }
 
         #fromSender { 
-            font-size: 1.2rem; 
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.6rem; 
             color: var(--golden); 
             margin-bottom: 8px; 
-            font-weight: 600;
+            text-shadow: 1px 1px 2px black;
         }
 
         #familyWishingMessage {
-            font-size: 0.95rem; 
-            font-weight: 600; 
+            font-size: 1rem; 
+            font-weight: 700; 
             color: #7bff00; 
             margin: 10px 0; 
             line-height: 1.4; 
@@ -86,8 +90,8 @@
         }
 
         @keyframes continuousGlow {
-            0%, 100% { transform: scale(1); text-shadow: 0 0 5px rgba(123, 255, 0, 0.3); }
-            50% { transform: scale(1.05); color: #fff; text-shadow: 0 0 15px rgba(124, 255, 0, 0.7); }
+            0%, 100% { transform: scale(1); text-shadow: 0 0 5px rgba(123, 255, 0, 0.4); }
+            50% { transform: scale(1.05); color: #fff; text-shadow: 0 0 15px rgba(124, 255, 0, 0.8); }
         }
 
         .ad-bottom-fixed {
@@ -96,16 +100,18 @@
             align-items: center; z-index: 99999; border-top: 1px solid var(--golden);
         }
 
-        #senderSection { margin-top: 5px; }
-        label { font-size: 0.85rem; margin-bottom: 4px; display: block; }
+        label { font-size: 0.8rem; margin-bottom: 4px; display: block; font-weight: bold; }
+        
         input[type="text"] { 
             width: 100%; 
             padding: 10px; 
             margin-bottom: 10px; 
-            border-radius: 6px; 
+            border-radius: 8px; 
             font-size: 0.9rem;
-            border: 1px solid var(--input-border);
-            color: var(--button-text-green);
+            border: 2px solid var(--golden);
+            background: var(--input-bg);
+            text-align: center;
+            font-weight: bold;
         }
         
         button { 
@@ -113,45 +119,53 @@
             color: var(--button-text-green); 
             border: none; 
             padding: 12px; 
-            border-radius: 6px; 
-            font-weight: bold; 
+            border-radius: 8px; 
+            font-weight: 800; 
             cursor: pointer; 
             width: 100%;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 #4e8a00;
         }
+        button:active { transform: translateY(2px); box-shadow: 0 2px 0 #4e8a00; }
 
-        #shareSection { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--golden); }
+        #shareSection { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--golden); }
 
-        .main-heading-animate { animation: mainHeadingAnim 1s forwards; }
-        @keyframes mainHeadingAnim { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        /* Animations */
+        .main-heading-animate { animation: bounceIn 1.2s ease-out; }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
         
         @media (min-width: 600px) {
-            body { justify-content: center; }
-            #eidImage { max-width: 200px; }
-            #mainHeading { font-size: 2.8rem; }
+            #eidImage { max-width: 180px; }
+            #mainHeading { font-size: 3rem; }
             #familyWishingMessage { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <canvas id="fireworksCanvas"></canvas>
+    <canvas id="animationCanvas"></canvas>
 
     <div class="container">
         <img id="eidImage" src="eid.gif" alt="Eid Mubarak">
-        <h1 id="mainHeading">Eid Mubarak</h1>
+        <h1 id="mainHeading">🌙 Eid Mubarak ✨</h1>
         <p id="fromSender" style="display:none;"></p>
-        <p id="familyWishingMessage">Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr!</p>
+        <p id="familyWishingMessage">🎊 Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr! 🕌🤲⭐</p>
 
         <div id="senderSection">
-            <label>Your Name:</label>
-            <input type="text" id="senderName" placeholder="Enter your name">
-            <button id="createShareButton">Create & Share Greeting</button>
+            <label>✍️ ENTER YOUR NAME BELOW:</label>
+            <input type="text" id="senderName" placeholder="Type your name here...">
+            <button id="createShareButton">🚀 Create & Share Greeting</button>
         </div>
 
         <div id="shareSection" style="display:none;">
             <div style="display: flex; align-items: center;">
                 <input type="text" id="generatedLink" readonly style="margin-bottom:0;">
-                <button id="copyButton" style="width: 70px; margin-left: 5px; padding: 10px 0;">Copy</button>
+                <button id="copyButton" style="width: 70px; margin-left: 5px; padding: 10px 0; box-shadow: none;">📋 Copy</button>
             </div>
         </div>
     </div>
@@ -167,6 +181,8 @@
     <audio id="backgroundSong" src="song.mp3" loop></audio> 
     
     <script>
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d');
         const backgroundSong = document.getElementById('backgroundSong');
         const mainHeadingEl = document.getElementById('mainHeading');
         const fromSenderText = document.getElementById('fromSender');
@@ -176,16 +192,14 @@
         const generatedLinkInput = document.getElementById('generatedLink');
         const copyButton = document.getElementById('copyButton');
 
-        // Logic to start audio on the first tap anywhere on screen
-        const startMusic = () => {
-            backgroundSong.play().then(() => {
-                console.log("Audio started automatically");
-                // Ek baar bajne ke baad event hata dete hain
-                document.removeEventListener('click', startMusic);
-                document.removeEventListener('touchstart', startMusic);
-            }).catch(e => console.log("Waiting for interaction..."));
-        };
+        let particles = [];
 
+        // Audio Auto-play Logic
+        const startMusic = () => {
+            backgroundSong.play().catch(e => console.log("Tap to play"));
+            document.removeEventListener('click', startMusic);
+            document.removeEventListener('touchstart', startMusic);
+        };
         document.addEventListener('click', startMusic);
         document.addEventListener('touchstart', startMusic);
 
@@ -194,50 +208,105 @@
             const sender = urlParams.get('sender');
             if (sender) {
                 mainHeadingEl.classList.add('main-heading-animate');
-                fromSenderText.textContent = `From ${decodeURIComponent(sender)}`;
+                fromSenderText.innerHTML = `<span>From</span> ${decodeURIComponent(sender)} 👤`;
                 fromSenderText.style.display = 'block';
             }
-            initFireworks();
+            initAnimations();
         });
+
+        // Confetti & Fireworks Animation
+        function initAnimations() {
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight;
+            
+            // Periodically launch Party Poppers from corners
+            setInterval(() => {
+                launchPopper(0, canvas.height, 45); // Left corner
+                launchPopper(canvas.width, canvas.height, 135); // Right corner
+            }, 3000);
+
+            // Periodically launch Fireworks
+            setInterval(() => {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * (canvas.height / 3);
+                createExplosion(x, y);
+            }, 1500);
+
+            animate();
+        }
+
+        function launchPopper(x, y, baseAngle) {
+            for(let i=0; i<30; i++) {
+                const angle = (baseAngle + (Math.random() - 0.5) * 40) * (Math.PI / 180);
+                const speed = Math.random() * 8 + 5;
+                particles.push({
+                    x, y,
+                    vx: Math.cos(angle) * speed,
+                    vy: -Math.sin(angle) * speed,
+                    size: Math.random() * 6 + 2,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    type: 'confetti',
+                    life: 1
+                });
+            }
+        }
+
+        function createExplosion(x, y) {
+            for(let i=0; i<25; i++) {
+                particles.push({
+                    x, y,
+                    vx: (Math.random() - 0.5) * 6,
+                    vy: (Math.random() - 0.5) * 6,
+                    size: 2,
+                    color: '#7bff00',
+                    type: 'firework',
+                    life: 1
+                });
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if(p.type === 'confetti') p.vy += 0.2; // Gravity for confetti
+                p.life -= 0.01;
+
+                ctx.globalAlpha = p.life;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                if(p.type === 'confetti') {
+                    ctx.fillRect(p.x, p.y, p.size, p.size);
+                } else {
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                if(p.life <= 0) particles.splice(i, 1);
+            });
+            ctx.globalAlpha = 1;
+        }
 
         createShareButton.addEventListener('click', () => {
             const name = senderNameInput.value.trim();
-            if (!name) return alert("Please enter your name");
+            if (!name) return alert("Please type your name first! ✍️");
             const generatedUrl = `${window.location.origin}${window.location.pathname}?sender=${encodeURIComponent(name)}`;
             generatedLinkInput.value = generatedUrl;
             shareSection.style.display = 'block';
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(name + ' sends you Eid greetings! 🎉 ' + generatedUrl)}`, '_blank'); 
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('✨ ' + name + ' sends you a special Eid-ul-Fitr greeting! 🌙 Click here: ' + generatedUrl)}`, '_blank'); 
+            // Extra burst on click
+            launchPopper(canvas.width/2, canvas.height, 90);
         });
 
         copyButton.addEventListener('click', () => {
             generatedLinkInput.select();
             document.execCommand('copy');
-            copyButton.textContent = 'OK!';
-            setTimeout(() => copyButton.textContent = 'Copy', 2000);
+            copyButton.textContent = '✅ Done!';
+            setTimeout(() => copyButton.textContent = '📋 Copy', 2000);
         });
-
-        const canvas = document.getElementById('fireworksCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        function initFireworks() {
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            setInterval(() => {
-                const x = Math.random() * canvas.width;
-                const y = Math.random() * (canvas.height / 3);
-                for(let i=0; i<20; i++) particles.push({ x, y, vx:(Math.random()-0.5)*4, vy:(Math.random()-0.5)*4, a:1, c:`hsl(${Math.random()*360},100%,50%)` });
-            }, 1200);
-            animate();
-        }
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p,i) => {
-                p.x+=p.vx; p.y+=p.vy; p.a-=0.015;
-                ctx.globalAlpha=p.a; ctx.fillStyle=p.c;
-                ctx.beginPath(); ctx.arc(p.x,p.y,1.5,0,Math.PI*2); ctx.fill();
-                if(p.a<=0) particles.splice(i,1);
-            });
-        }
     </script>
 </body>
 </html>
