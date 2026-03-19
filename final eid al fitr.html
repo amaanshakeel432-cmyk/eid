@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid-ul-Fitr Mubarak!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-green: #0a280a;
+            --black: #000000;
+            --golden: #7bff00;
+            --golden-heading: #ffc107; 
+            --cream-text: #ffebcc;
+            --button-text-green: #143d14;
+            --input-bg: #fafff0;
+            --input-border: #ccffcc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at bottom, var(--dark-green) 0%, var(--black) 70%);
+            color: var(--cream-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            padding-bottom: 80px; 
+        }
+
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            background: rgba(10, 40, 10, 0.85);
+            border: 2px solid var(--golden);
+            border-radius: 15px;
+            padding: 20px 30px 30px 30px;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.3) inset;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 30px;
+        }
+
+        /* --- CONTINUOUS ANIMATION FOR WISH MESSAGE --- */
+        #familyWishingMessage {
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: rgb(129, 202, 18); 
+            margin-top: 10px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            display: block;
+            /* Ye animation hamesha chalti rahegi (infinite) */
+            animation: continuousGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes continuousGlow {
+            0%, 100% { 
+                transform: scale(1); 
+                text-shadow: 0 0 5px rgba(129, 202, 18, 0.5);
+            }
+            50% { 
+                transform: scale(1.08); 
+                color: #fff; 
+                text-shadow: 0 0 20px rgba(124, 255, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        /* --- ADSTERRA BOTTOM AD STYLING --- */
+        .ad-bottom-fixed {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999; 
+            border-top: 1px solid var(--golden);
+        }
+
+        #eidImage {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            border: 3px solid var(--golden);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        #mainHeading {
+            font-family: 'Satisfy', cursive;
+            color: var(--golden-heading);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+
+        #fromSender {
+            font-size: 1.6rem;
+            color: var(--cream-text);
+            margin-bottom: 15px;
+            opacity: 0;
+        }
+        
+        #musicToggleButton {
+            position: absolute;
+            top: 0;
+            right: 5px; 
+            transform: translateY(calc(-100% - 0px));
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--golden);
+            color: var(--button-text-green);
+            border: 2px solid var(--golden-heading);
+            cursor: pointer;
+            z-index: 20; 
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--input-border);
+            background: var(--input-bg);
+            color: var(--button-text-green);
+        }
+
+        button:not(#musicToggleButton) {
+            background: linear-gradient(145deg, var(--golden), #a2ff00);
+            color: var(--button-text-green);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #shareSection {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--golden);
+        }
+
+        /* Entrance Animations */
+        .main-heading-animate { animation: mainHeadingAnim 1.5s forwards; }
+        @keyframes mainHeadingAnim {
+            0% { transform: scale(0.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .from-sender-animate { animation: fromSenderAnim 1.2s ease-out 0.5s forwards; }
+        @keyframes fromSenderAnim {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            #mainHeading { font-size: 2.5rem; }
+            .container { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fireworksCanvas"></canvas>
+
+    <div class="container">
+        <img id="eidImage" alt="Eid Mubarak Greetings">
+        <h1 id="mainHeading">Eid Mubarak</h1>
+        <p id="fromSender" style="display:none;"></p>
+        
+        <!-- Continuous Animated Line -->
+        <p id="familyWishingMessage">Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr!</p>
+
+        <div id="senderSection" style="position:relative;">
+            <button id="musicToggleButton">🔈</button>
+            <label style="display:block; margin-bottom:8px;">Your Name:</label>
+            <input type="text" id="senderName" placeholder="Enter your name">
+            <button id="createShareButton">Create & Share Eid Greeting</button>
+        </div>
+
+        <div id="shareSection" style="display:none;">
+            <div style="display: flex; align-items: center;">
+                <input type="text" id="generatedLink" readonly>
+                <button id="copyButton" style="width: 80px; margin-left: 5px;">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADSTERRA BOTTOM AD START -->
+    <div class="ad-bottom-fixed">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '501f153248c74c09ae2d7bf728d506c2',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/501f153248c74c09ae2d7bf728d506c2/invoke.js"></script>
+    </div>
+    <!-- ADSTERRA BOTTOM AD END -->
+
+    <audio id="backgroundSong" loop hidden></audio> 
+    
+    <script>
+        // Path helper for GitHub Pages
+        function getBasePath() {
+            const isGitHubPages = location.hostname.endsWith('github.io');
+            if (isGitHubPages) {
+                const pathSegments = location.pathname.split('/').filter(segment => segment && segment !== 'index.html');
+                if (pathSegments.length > 0) return '/' + pathSegments[0];
+            }
+            return '';
+        }
+        const basePath = getBasePath();
+        
+        document.getElementById('eidImage').src = basePath + '/eid.gif';
+        const backgroundSong = document.getElementById('backgroundSong');
+        backgroundSong.src = basePath + '/song.mp3'; 
+
+        const mainHeadingEl = document.getElementById('mainHeading');
+        const fromSenderText = document.getElementById('fromSender');
+        const senderNameInput = document.getElementById('senderName');
+        const createShareButton = document.getElementById('createShareButton');
+        const shareSection = document.getElementById('shareSection');
+        const generatedLinkInput = document.getElementById('generatedLink');
+        const copyButton = document.getElementById('copyButton');
+        const musicToggleButton = document.getElementById('musicToggleButton'); 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sender = urlParams.get('sender');
+            
+            if (sender) {
+                const decodedSender = decodeURIComponent(sender);
+                mainHeadingEl.classList.add('main-heading-animate');
+                fromSenderText.textContent = `From ${decodedSender}`;
+                fromSenderText.style.display = 'block';
+                fromSenderText.classList.add('from-sender-animate');
+            }
+            
+            initFireworks();
+
+            musicToggleButton.addEventListener('click', () => {
+                if (backgroundSong.paused) {
+                    backgroundSong.play().then(() => {
+                        musicToggleButton.innerHTML = '🔊';
+                    }).catch(err => alert("Interacted once to play music."));
+                } else {
+                    backgroundSong.pause();
+                    musicToggleButton.innerHTML = '🔈';
+                }
+            });
+        });
+
+        createShareButton.addEventListener('click', () => {
+            const name = senderNameInput.value.trim();
+            if (!name) { alert("Please enter your name."); return; }
+            const currentUrl = window.location.origin + window.location.pathname;
+            const generatedUrl = `${currentUrl}?sender=${encodeURIComponent(name)}`;
+            generatedLinkInput.value = generatedUrl;
+            shareSection.style.display = 'block';
+            const whatsAppMessage = `${name} sends you Eid-ul-Fitr greetings!🎉 ${generatedUrl}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(whatsAppMessage)}`, '_blank'); 
+        });
+
+        copyButton.addEventListener('click', () => {
+            generatedLinkInput.select();
+            document.execCommand('copy');
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => { copyButton.textContent = 'Copy'; }, 2000);
+        });
+
+        // Simple Fireworks Logic
+        const fireworksCanvas = document.getElementById('fireworksCanvas');
+        const ctx = fireworksCanvas.getContext('2d');
+        let particles = [];
+
+        function initFireworks() {
+            fireworksCanvas.width = window.innerWidth;
+            fireworksCanvas.height = window.innerHeight;
+            setInterval(() => {
+                const x = Math.random() * fireworksCanvas.width;
+                const y = Math.random() * (fireworksCanvas.height / 2);
+                for(let i=0; i<40; i++) {
+                    particles.push({
+                        x, y,
+                        vx: (Math.random()-0.5)*6,
+                        vy: (Math.random()-0.5)*6,
+                        alpha: 1,
+                        color: `hsl(${Math.random()*360}, 100%, 50%)`
+                    });
+                }
+            }, 800);
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            ctx.fillRect(0,0,fireworksCanvas.width, fireworksCanvas.height);
+            particles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy; p.alpha -= 0.01;
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+                ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI*2); ctx.fill();
+                if(p.alpha <= 0) particles.splice(i, 1);
+            });
+            ctx.globalAlpha = 1;
+        }
+    </script>
+</body>
+</html>
