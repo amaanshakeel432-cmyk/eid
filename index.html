@@ -39,18 +39,6 @@
             z-index: 1; pointer-events: none;
         }
 
-        /* --- SUGGESTION 1: FLOATING LANTERNS --- */
-        .lantern {
-            position: fixed; font-size: 35px; z-index: 5;
-            animation: floatLantern 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px var(--golden-heading));
-            pointer-events: none;
-        }
-        @keyframes floatLantern {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-25px) rotate(5deg); }
-        }
-
         .container {
             background: rgba(10, 40, 10, 0.85);
             border: 2px solid var(--golden);
@@ -64,12 +52,13 @@
 
         #eidImage { width: 100%; max-width: 100px; border-radius: 10px; margin-bottom: 2px; }
 
+        /* --- MAIN HEADING UPDATED WITH MORE SPACING --- */
         #mainHeading { 
             font-family: 'Satisfy', cursive; 
             color: var(--golden-heading); 
             font-size: 8.5vw; 
             white-space: nowrap; 
-            margin-bottom: 15px; 
+            margin-bottom: 15px; /* Spacing barha di hai yahan */
             text-shadow: 0 0 12px rgba(255, 193, 7, 0.8);
             display: inline-block;
             animation: floatingWave 3s ease-in-out infinite;
@@ -81,39 +70,73 @@
             75% { transform: translateY(8px) rotate(1deg); }
         }
 
+        /* --- LABEL WITH GLOW & BOUNCE --- */
         @keyframes fingerBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
         }
 
         .animated-label {
-            display: block; font-size: 1.1rem; font-weight: 800;
-            color: var(--golden); margin: 25px 0;
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--golden);
+            letter-spacing: 1px;
+            margin-top: 25px; 
+            margin-bottom: 25px; 
             animation: fingerBounce 1.2s ease-in-out infinite;
             text-shadow: 0 0 10px var(--golden), 0 0 20px rgba(123, 255, 0, 0.6);
         }
 
         .sender-badge {
-            display: none; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--golden);
-            padding: 4px 18px; border-radius: 20px 4px 20px 4px;
-            font-family: 'Great Vibes', cursive; font-size: 1.4rem; color: #fff;
-            margin: 5px auto 10px auto; width: fit-content; box-shadow: 0 0 12px var(--golden);
-            position: relative; overflow: hidden; animation: badgeFloat 3s infinite;
+            display: none; 
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--golden);
+            padding: 4px 18px;
+            border-radius: 20px 4px 20px 4px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 5px auto 10px auto;
+            width: fit-content;
+            box-shadow: 0 0 12px var(--golden);
+            position: relative;
+            overflow: hidden;
+            animation: badgeFloat 3s infinite ease-in-out;
+            text-shadow: 0 0 5px var(--golden);
         }
 
-        #familyWishingMessage { font-size: 0.85rem; font-weight: 700; color: #7bff00; margin-bottom: 5px; line-height: 1.4; }
+        .sender-badge::after {
+            content: ''; position: absolute; top: -50%; left: -100%;
+            width: 50%; height: 200%; background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg); animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer { 0% { left: -100%; } 100% { left: 150%; } }
+        @keyframes badgeFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+        #familyWishingMessage { 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            color: #7bff00; 
+            margin-bottom: 5px; 
+            line-height: 1.4; 
+        }
 
         .dua-box {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--golden);
             border-radius: 10px; height: 95px; margin: 8px 0;
             position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
         }
-        .dua-slide { position: absolute; width: 100%; padding: 5px 10px; opacity: 0; transition: 0.6s; }
+        .dua-slide { position: absolute; width: 100%; padding: 5px 10px; opacity: 0; transition: 0.6s ease-in-out; }
         .dua-slide.active { opacity: 1; }
         
+        .dua-emoji { font-size: 1.3rem; display: block; margin-bottom: 12px; }
+        .dua-text { font-size: 0.8rem; font-style: italic; color: #fff; line-height: 1.3; }
+
         input[type="text"] { 
             width: 100%; padding: 12px; margin-bottom: 8px; border-radius: 8px; 
-            border: 2px solid var(--golden); background: #fafff0; text-align: center; font-weight: bold; font-size: 1rem;
+            border: 2px solid var(--golden); background: #fafff0; text-align: center; 
+            font-weight: bold; color: #143d14; font-size: 1rem;
         }
         
         button { 
@@ -123,42 +146,55 @@
             box-shadow: 0 4px 0px #4e8a00;
         }
 
-        .ad-bottom-fixed { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #000; z-index: 999; border-top: 1px solid var(--golden); }
+        .ad-bottom-fixed {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
+            background: #000; display: flex; justify-content: center; align-items: center; 
+            z-index: 99999; border-top: 1px solid var(--golden);
+        }
 
         @media (min-width: 480px) {
-            #mainHeading { font-size: 2.5rem; }
+            #mainHeading { font-size: 2.5rem; margin-bottom: 20px; }
+            .sender-badge { font-size: 1.8rem; }
+            .dua-box { height: 110px; }
             .animated-label { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Lanterns -->
-    <div class="lantern" style="top: 10%; left: 3%;">🏮</div>
-    <div class="lantern" style="top: 15%; right: 3%; animation-delay: 1s;">🏮</div>
-
     <canvas id="animationCanvas"></canvas>
 
     <div class="container">
         <img id="eidImage" src="eid.gif" alt="Eid Mubarak">
+        
         <h1 id="mainHeading">🌙 Eid Mubarak ✨</h1>
+
         <div id="fromSender" class="sender-badge"></div>
+
         <p id="familyWishingMessage">🎊 Wishing you and your family <br> a blessed Eid-ul-Fitr! 🕌</p>
 
         <div class="dua-box">
             <div class="dua-slide active">
-                <span style="display:block; font-size:1.3rem; margin-bottom:12px;">🤲</span>
-                <p style="font-size:0.8rem; font-style:italic;">"May Allah shower His countless blessings upon you and your family."</p>
+                <span class="dua-emoji">🤲</span>
+                <p class="dua-text">"May Allah shower His countless blessings upon you and your family."</p>
             </div>
             <div class="dua-slide">
-                <span style="display:block; font-size:1.3rem; margin-bottom:12px;">✨</span>
-                <p style="font-size:0.8rem; font-style:italic;">"May this Eid bring joy, peace, and prosperity to your beautiful life."</p>
+                <span class="dua-emoji">✨</span>
+                <p class="dua-text">"May this Eid bring joy, peace, and prosperity to your beautiful life."</p>
+            </div>
+            <div class="dua-slide">
+                <span class="dua-emoji">🌙</span>
+                <p class="dua-text">"May your heart be filled with faith and your home with happiness."</p>
+            </div>
+            <div class="dua-slide">
+                <span class="dua-emoji">⭐</span>
+                <p class="dua-text">"May Allah accept your good deeds and forgive all your sins."</p>
             </div>
         </div>
 
         <div id="senderSection">
             <label class="animated-label">👇 ENTER YOUR NAME 👇</label>
-            <input type="text" id="senderName" placeholder="Type your name here..." onfocus="playMusic()">
-            <button id="createShareButton" onclick="handleCreate()">🚀 Create & Share Greeting</button>
+            <input type="text" id="senderName" placeholder="Type your name here..." onfocus="playMusic()" onclick="playMusic()">
+            <button id="createShareButton" onclick="playMusic()">🚀 Create & Share Greeting</button>
         </div>
 
         <div id="shareSection" style="display:none; margin-top:10px;">
@@ -168,9 +204,19 @@
             </div>
         </div>
 
-        <div style="color:var(--golden); font-size:0.8rem; margin-top:15px; opacity:0.6;">
-            <p style="border-top: 1px solid #7bff0033; padding-top: 10px;"><b>© Brought To You By Infoma</b></p>
+        <div style="color:var(--golden); font-size:0.8rem; margin-top:10px; opacity:0.6;">
+            <p style="border-top: 3px solid #7bff00; padding-top: 10px;">
+                <b>© Brought To You By Infoma</b>
+            </p>
         </div>
+    </div>
+
+    <!-- Adsterra -->
+    <div class="ad-bottom-fixed">
+        <script type="text/javascript">
+            atOptions = { 'key' : '501f153248c74c09ae2d7bf728d506c2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/501f153248c74c09ae2d7bf728d506c2/invoke.js"></script>
     </div>
 
     <audio id="backgroundSong" src="song.mp3" loop preload="auto"></audio> 
@@ -181,9 +227,12 @@
         const ctx = canvas.getContext('2d');
         let particles = [];
 
-        function playMusic() { if (backgroundSong.paused) backgroundSong.play().catch(e => {}); }
+        function playMusic() {
+            if (backgroundSong.paused) {
+                backgroundSong.play().catch(e => console.log("Audio play blocked"));
+            }
+        }
 
-        // Dua Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.dua-slide');
         setInterval(() => {
@@ -192,67 +241,77 @@
             slides[currentSlide].classList.add('active');
         }, 2500);
 
-        // Load Name
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const sender = urlParams.get('sender');
+            const badge = document.getElementById('fromSender');
             if (sender) {
-                const badge = document.getElementById('fromSender');
                 badge.innerHTML = `✨ ${decodeURIComponent(sender)} ✨`;
                 badge.style.display = 'block';
             }
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            animate();
+            initAnimations();
         });
 
-        // Firework Logic
-        function createFirework(x, y, color = '#7bff00') {
+        function initAnimations() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            setInterval(() => { createFirecracker(Math.random() * canvas.width, Math.random() * (canvas.height / 2.2)); }, 1200);
+            setInterval(() => { launchPopper(0, canvas.height, 45); launchPopper(canvas.width, canvas.height, 135); }, 3000);
+            animate();
+        }
+
+        function createFirecracker(x, y) {
+            const colors = ['#FFD700', '#FF1493', '#00FF7F', '#00BFFF', '#FF4500', '#FFFFFF', '#7BFF00'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
             for(let i=0; i<40; i++) {
                 const angle = Math.random() * Math.PI * 2;
                 const speed = Math.random() * 6 + 2;
-                particles.push({ x, y, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed, size: Math.random()*3, color, life: 1 });
+                particles.push({ x, y, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed, size: Math.random()*2+1.5, color: color, type: 'firework', life: 1, decay: Math.random()*0.01+0.008 });
             }
         }
 
-        // SUGGESTION 4: INTERACTIVE BURST
-        function handleCreate() {
-            const name = document.getElementById('senderName').value.trim();
-            if (!name) return alert("Please type your name! ✍️");
-            
-            playMusic();
-            // Button click par center mein burst
-            createFirework(window.innerWidth/2, window.innerHeight/2, '#ffc107');
-            createFirework(window.innerWidth/2, window.innerHeight/2, '#7bff00');
-
-            const generatedUrl = `${window.location.origin}${window.location.pathname}?sender=${encodeURIComponent(name)}`;
-            document.getElementById('generatedLink').value = generatedUrl;
-            document.getElementById('shareSection').style.display = 'block';
-            
-            setTimeout(() => {
-                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('✨ ' + name + ' sends you a special Eid greeting! 🌙 ' + generatedUrl)}`, '_blank');
-            }, 800);
+        function launchPopper(x, y, baseAngle) {
+            for(let i=0; i<20; i++) {
+                const angle = (baseAngle + (Math.random() - 0.5) * 40) * (Math.PI / 180);
+                const speed = Math.random() * 8 + 4;
+                particles.push({ x, y, vx: Math.cos(angle)*speed, vy:-Math.sin(angle)*speed, size: Math.random()*5+2, color: `hsl(${Math.random()*360}, 100%, 50%)`, type: 'confetti', life: 1, decay: 0.015 });
+            }
         }
 
         function animate() {
             requestAnimationFrame(animate);
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.life -= 0.015;
+                p.x += p.vx; p.y += p.vy;
+                if(p.type === 'confetti') p.vy += 0.2; else p.vy += 0.05;
+                p.life -= p.decay || 0.015;
                 ctx.globalAlpha = p.life; ctx.fillStyle = p.color;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                if(p.type === 'firework') { ctx.shadowBlur = 8; ctx.shadowColor = p.color; }
+                ctx.beginPath();
+                if(p.type === 'confetti') ctx.fillRect(p.x, p.y, p.size, p.size);
+                else { ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); }
                 if(p.life <= 0) particles.splice(i, 1);
             });
+            ctx.shadowBlur = 0; ctx.globalAlpha = 1;
         }
 
-        // Auto background fireworks
-        setInterval(() => createFirework(Math.random()*canvas.width, Math.random()*canvas.height/2), 2000);
+        document.getElementById('createShareButton').addEventListener('click', () => {
+            const name = document.getElementById('senderName').value.trim();
+            if (!name) return alert("Please type your name! ✍️");
+            const generatedUrl = `${window.location.origin}${window.location.pathname}?sender=${encodeURIComponent(name)}`;
+            document.getElementById('generatedLink').value = generatedUrl;
+            document.getElementById('shareSection').style.display = 'block';
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('✨ ' + name + ' sends you a special Eid greeting! 🌙 Click here: ' + generatedUrl)}`, '_blank'); 
+        });
 
-        document.getElementById('copyButton').onclick = function() {
+        document.getElementById('copyButton').addEventListener('click', function() {
             const input = document.getElementById('generatedLink');
-            input.select(); document.execCommand('copy');
-            this.textContent = '✅'; setTimeout(() => this.textContent = '📋 Copy', 2000);
-        };
+            input.select();
+            document.execCommand('copy');
+            this.textContent = '✅';
+            setTimeout(() => this.textContent = '📋 Copy', 2000);
+        });
     </script>
 </body>
 </html>
