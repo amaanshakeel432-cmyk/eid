@@ -15,7 +15,6 @@
             --golden: #7bff00;
             --golden-heading: #ffc107; 
             --cream-text: #ffebcc;
-            --button-text-green: #143d14;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +31,7 @@
             min-height: 100vh;
             padding: 5px;
             text-align: center;
-            padding-bottom: 70px; 
+            padding-bottom: 75px; 
         }
 
         #animationCanvas {
@@ -52,81 +51,81 @@
         }
 
         #eidImage { 
-            width: 100%; max-width: 110px; border-radius: 10px; 
-            border: 2px solid var(--golden); margin-bottom: 5px; 
+            width: 100%; max-width: 105px; border-radius: 10px; 
+            border: 2px solid var(--golden); margin-bottom: 2px; 
         }
 
         #mainHeading { 
             font-family: 'Satisfy', cursive; color: var(--golden-heading); 
-            font-size: 8vw; white-space: nowrap; margin-bottom: 5px;
-            text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
+            font-size: 8.5vw; white-space: nowrap; margin-bottom: 2px;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
         }
 
-        /* --- ROYAL SENDER NAME BADGE --- */
+        /* --- PREMIUM EYE-CATCHY NAME BADGE --- */
         .sender-badge {
-            display: none;
-            background: linear-gradient(45deg, #7bff00, #ffc107);
-            color: var(--button-text-green);
-            padding: 5px 20px;
-            border-radius: 50px;
+            display: none; 
+            background: linear-gradient(135deg, #ffc107 0%, #7bff00 100%);
+            color: #0a280a;
+            padding: 6px 25px;
+            border-radius: 12px;
             font-family: 'Great Vibes', cursive;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            margin: 10px auto;
+            margin: 8px auto;
             width: fit-content;
-            box-shadow: 0 0 15px rgba(123, 255, 0, 0.6);
             border: 2px solid #fff;
-            animation: floating 3s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(123, 255, 0, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: pulseGlow 2s infinite ease-in-out;
             position: relative;
+            z-index: 15;
         }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-5px) rotate(1deg); }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(123, 255, 0, 0.6); }
+            50% { transform: scale(1.06); box-shadow: 0 0 30px rgba(255, 193, 7, 0.9); }
         }
 
         #familyWishingMessage {
             font-size: 0.8rem; font-weight: 700; color: #7bff00; 
-            margin-bottom: 5px; line-height: 1.2;
+            margin-top: 5px; margin-bottom: 5px; line-height: 1.2;
         }
 
         .dua-box {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.07);
             border: 1px solid var(--golden);
             border-radius: 10px;
-            height: 80px; margin: 8px 0;
+            height: 75px; margin: 8px 0;
             position: relative; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
         }
 
         .dua-slide {
             position: absolute; width: 100%; padding: 5px;
-            opacity: 0; transition: 0.8s; transform: scale(0.9);
+            opacity: 0; transition: 0.8s;
         }
         .dua-slide.active { opacity: 1; transform: scale(1); }
         .dua-emoji { font-size: 1.2rem; display: block; }
-        .dua-text { font-size: 0.8rem; font-style: italic; color: #fff; }
-
-        /* Space Filler Decor */
-        .decor-line {
-            color: var(--golden);
-            font-size: 1.2rem;
-            margin: 8px 0;
-            letter-spacing: 5px;
-            opacity: 0.7;
-        }
+        .dua-text { font-size: 0.75rem; font-style: italic; color: #fff; line-height: 1.2; }
 
         input[type="text"] { 
             width: 100%; padding: 10px; margin-bottom: 8px; 
             border-radius: 8px; border: 2px solid var(--golden);
             background: #fafff0; text-align: center; font-weight: bold;
-            color: #143d14; font-size: 0.9rem;
+            color: #143d14; font-size: 0.95rem;
         }
         
         button { 
             background: linear-gradient(145deg, var(--golden), #a2ff00); 
             color: #143d14; border: none; padding: 12px; 
             border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%;
-            font-size: 0.95rem; text-transform: uppercase;
+            font-size: 1rem; text-transform: uppercase;
+            box-shadow: 0 4px 0px #4e8a00;
+        }
+        button:active { transform: translateY(2px); box-shadow: 0 2px 0px #4e8a00; }
+
+        .decor-line {
+            color: var(--golden); font-size: 1.1rem;
+            margin: 10px 0 5px 0; letter-spacing: 5px;
+            opacity: 0.8; text-shadow: 0 0 5px var(--golden);
         }
 
         .ad-bottom-fixed {
@@ -138,20 +137,21 @@
         @media (min-width: 480px) {
             #mainHeading { font-size: 2.2rem; }
             #eidImage { max-width: 140px; }
-            .dua-box { height: 90px; }
+            .sender-badge { font-size: 2.2rem; }
         }
     </style>
 </head>
-<body onclick="playOnFirstTouch()" ontouchstart="playOnFirstTouch()">
+<body onclick="forcePlayMusic()" ontouchstart="forcePlayMusic()">
     <canvas id="animationCanvas"></canvas>
 
     <div class="container">
         <img id="eidImage" src="eid.gif" alt="Eid Mubarak">
         
-        <!-- Name Badge Section -->
+        <h1 id="mainHeading">🌙 Eid Mubarak ✨</h1>
+
+        <!-- Premium Name Badge (Moved Below Heading) -->
         <div id="fromSender" class="sender-badge"></div>
 
-        <h1 id="mainHeading">🌙 Eid Mubarak ✨</h1>
         <p id="familyWishingMessage">🎊 Infoma Academy Wishing you and your family a blessed Eid-ul-Fitr! 🕌</p>
 
         <div class="dua-box">
@@ -167,22 +167,25 @@
                 <span class="dua-emoji">🌙</span>
                 <p class="dua-text">"May your heart be filled with faith and your home with happiness."</p>
             </div>
+            <div class="dua-slide">
+                <span class="dua-emoji">⭐</span>
+                <p class="dua-text">"May Allah accept your good deeds and forgive all your sins."</p>
+            </div>
         </div>
 
         <div id="senderSection">
             <label style="font-size: 0.7rem; display:block; margin-bottom:4px; font-weight:bold;">✍️ ENTER YOUR NAME:</label>
-            <input type="text" id="senderName" placeholder="Type your name...">
-            <button id="createShareButton" onclick="playOnFirstTouch()">🚀 Create & Share Greeting</button>
+            <input type="text" id="senderName" placeholder="Type your name here...">
+            <button id="createShareButton" onclick="forcePlayMusic()">🚀 Create & Share Greeting</button>
         </div>
 
         <div id="shareSection" style="display:none; margin-top:10px;">
             <div style="display: flex; align-items: center;">
                 <input type="text" id="generatedLink" readonly style="margin-bottom:0;">
-                <button id="copyButton" style="width: 70px; margin-left: 5px; padding: 10px 0;">📋 Copy</button>
+                <button id="copyButton" style="width: 70px; margin-left: 5px; padding: 10px 0; box-shadow:none;">📋 Copy</button>
             </div>
         </div>
 
-        <!-- Space Filling Decoration -->
         <div class="decor-line">🌙 ⭐ 🕌 ⭐ 🌙</div>
     </div>
 
@@ -193,23 +196,24 @@
         <script type="text/javascript" src="https://www.highperformanceformat.com/501f153248c74c09ae2d7bf728d506c2/invoke.js"></script>
     </div>
 
-    <!-- AUDIO with Preload -->
     <audio id="backgroundSong" src="song.mp3" loop preload="auto"></audio> 
     
     <script>
         const backgroundSong = document.getElementById('backgroundSong');
         
-        // Robust Sound Playback
-        function playOnFirstTouch() {
+        // Final Sound Fix
+        function forcePlayMusic() {
             if (backgroundSong.paused) {
-                backgroundSong.play().catch(e => console.log("Audio play blocked"));
-                // Remove listeners after first successful play
-                document.body.removeAttribute("onclick");
-                document.body.removeAttribute("ontouchstart");
+                backgroundSong.play().then(() => {
+                    console.log("Music Started");
+                    // Remove listeners once music starts
+                    document.body.onclick = null;
+                    document.body.ontouchstart = null;
+                }).catch(err => console.log("Waiting for user tap..."));
             }
         }
 
-        // --- DUA SLIDER ---
+        // Dua Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.dua-slide');
         setInterval(() => {
@@ -218,7 +222,7 @@
             slides[currentSlide].classList.add('active');
         }, 4000);
 
-        // --- NAME LOGIC ---
+        // Load Sender Name
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const sender = urlParams.get('sender');
@@ -230,7 +234,7 @@
             initAnimations();
         });
 
-        // --- SHARE LOGIC ---
+        // Create Greeting Logic
         const senderNameInput = document.getElementById('senderName');
         const generatedLinkInput = document.getElementById('generatedLink');
         const shareSection = document.getElementById('shareSection');
@@ -241,7 +245,9 @@
             const generatedUrl = `${window.location.origin}${window.location.pathname}?sender=${encodeURIComponent(name)}`;
             generatedLinkInput.value = generatedUrl;
             shareSection.style.display = 'block';
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('✨ ' + name + ' sends you a special Eid-ul-Fitr greeting! 🌙 Click here: ' + generatedUrl)}`, '_blank'); 
+            
+            const waText = `✨ *${name}* sends you a special Eid-ul-Fitr greeting! 🌙\n\nClick here to see: ${generatedUrl}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(waText)}`, '_blank'); 
         });
 
         document.getElementById('copyButton').addEventListener('click', function() {
@@ -251,30 +257,27 @@
             setTimeout(() => this.textContent = '📋 Copy', 2000);
         });
 
-        // --- ANIMATIONS ---
+        // Party Poppers
         const canvas = document.getElementById('animationCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
         function initAnimations() {
             canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             setInterval(() => { launchPopper(0, canvas.height, 45); launchPopper(canvas.width, canvas.height, 135); }, 3000);
             animate();
         }
-
         function launchPopper(x, y, baseAngle) {
-            for(let i=0; i<20; i++) {
+            for(let i=0; i<15; i++) {
                 const angle = (baseAngle + (Math.random() - 0.5) * 40) * (Math.PI / 180);
-                const speed = Math.random() * 7 + 4;
-                particles.push({ x, y, vx: Math.cos(angle)*speed, vy:-Math.sin(angle)*speed, size: Math.random()*5+2, color: `hsl(${Math.random()*360}, 100%, 50%)`, life: 1 });
+                const speed = Math.random() * 6 + 4;
+                particles.push({ x, y, vx: Math.cos(angle)*speed, vy:-Math.sin(angle)*speed, size: Math.random()*4+2, color: `hsl(${Math.random()*360}, 100%, 50%)`, life: 1 });
             }
         }
-
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy; p.vy += 0.2; p.life -= 0.01;
+                p.x += p.vx; p.y += p.vy; p.vy += 0.15; p.life -= 0.01;
                 ctx.globalAlpha = p.life; ctx.fillStyle = p.color;
                 ctx.fillRect(p.x, p.y, p.size, p.size);
                 if(p.life <= 0) particles.splice(i, 1);
