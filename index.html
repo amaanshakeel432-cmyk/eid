@@ -14,6 +14,31 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <style>
+        /* Styling for the expanding ring */
+.btn-ring {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    border: 3px solid #7bff00; /* Same color as button */
+    border-radius: 50px;       /* Matches button shape */
+    pointer-events: none;      /* Ensures clicks go through to the button */
+    z-index: -1;               /* Places it behind the button */
+    animation: ringExpand 1.5s infinite ease-out; /* Continuous animation */
+}
+
+/* The expanding animation logic */
+@keyframes ringExpand {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.4, 1.8); /* Expands outwards */
+        opacity: 0;                  /* Fades out */
+    }
+}
         /* --- DECORATIVE WELCOME SCREEN --- */
         #welcome-screen {
             position: fixed;
@@ -191,8 +216,10 @@
             <h1 class="splash-title"><span class="handshake">🤝</span> Assalamu Alaikum <span class="handshake">🤝</span></h1>
             <p class="splash-subtitle"><i>A Special Gift Awaits You!</i></p>
             <div class="open-btn-container">
-                <button class="open-btn" onclick="showMainContent()">➡️Click Here ⬅️</button>
-            </div>
+    <div class="btn-ring"></div>
+    <div class="btn-ring" style="animation-delay: 0.5s;"></div> <!-- Delayed ring -->
+    <button class="open-btn" onclick="showMainContent()">➡️Click Here⬅️</button>
+</div>
         </div>
     </div>
 
