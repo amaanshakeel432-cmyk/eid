@@ -31,8 +31,8 @@
             min-height: 100vh;
             padding: 5px;
             text-align: center;
-            padding-bottom: 75px; 
-            padding-top: 10px; /* Top ad ke liye thodi jagah */
+            padding-bottom: 80px; 
+            padding-top: 10px;
         }
 
         #animationCanvas {
@@ -40,7 +40,7 @@
             z-index: 1; pointer-events: none;
         }
 
-        /* Top Ad Container Style */
+        /* Top Ad Container */
         .ad-top-container {
             width: 100%;
             display: flex;
@@ -162,6 +162,17 @@
             z-index: 99999; border-top: 1px solid var(--golden);
         }
 
+        /* Middle Native Ad Box (Now outside) */
+        .native-ad-box-outside {
+            margin: 15px 0;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
         @media (min-width: 480px) {
             #mainHeading { font-size: 2.5rem; margin-bottom: 20px; }
             .sender-badge { font-size: 1.8rem; }
@@ -173,46 +184,26 @@
 <body>
     <canvas id="animationCanvas"></canvas>
 
-    <!-- NEW TOP ADSTERRA AD -->
+    <!-- 1. TOP AD -->
     <div class="ad-top-container">
         <script type="text/javascript">
-          atOptions = {
-            'key' : '501f153248c74c09ae2d7bf728d506c2',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };
+          atOptions = { 'key' : '501f153248c74c09ae2d7bf728d506c2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
         </script>
         <script type="text/javascript" src="https://www.highperformanceformat.com/501f153248c74c09ae2d7bf728d506c2/invoke.js"></script>
     </div>
 
+    <!-- MAIN CONTAINER START -->
     <div class="container">
         <img id="eidImage" src="eid.gif" alt="Eid Mubarak">
-        
         <h1 id="mainHeading">🌙 Eid Mubarak ✨</h1>
-
         <div id="fromSender" class="sender-badge"></div>
-
         <p id="familyWishingMessage">🎊 Wishing you and your family <br> a blessed Eid-ul-Fitr! 🕌</p>
 
         <div class="dua-box">
-            <div class="dua-slide active">
-                <span class="dua-emoji">🤲</span>
-                <p class="dua-text">"May Allah shower His countless blessings upon you and your family."</p>
-            </div>
-            <div class="dua-slide">
-                <span class="dua-emoji">✨</span>
-                <p class="dua-text">"May this Eid bring joy, peace, and prosperity to your beautiful life."</p>
-            </div>
-            <div class="dua-slide">
-                <span class="dua-emoji">🌙</span>
-                <p class="dua-text">"May your heart be filled with faith and your home with happiness."</p>
-            </div>
-            <div class="dua-slide">
-                <span class="dua-emoji">⭐</span>
-                <p class="dua-text">"May Allah accept your good deeds and forgive all your sins."</p>
-            </div>
+            <div class="dua-slide active"><span class="dua-emoji">🤲</span><p class="dua-text">"May Allah shower His countless blessings upon you and your family."</p></div>
+            <div class="dua-slide"><span class="dua-emoji">✨</span><p class="dua-text">"May this Eid bring joy, peace, and prosperity to your beautiful life."</p></div>
+            <div class="dua-slide"><span class="dua-emoji">🌙</span><p class="dua-text">"May your heart be filled with faith and your home with happiness."</p></div>
+            <div class="dua-slide"><span class="dua-emoji">⭐</span><p class="dua-text">"May Allah accept your good deeds and forgive all your sins."</p></div>
         </div>
 
         <div id="senderSection">
@@ -234,8 +225,15 @@
             </p>
         </div>
     </div>
+    <!-- MAIN CONTAINER END -->
 
-    <!-- BOTTOM ADSTERRA AD (Existing) -->
+    <!-- 2. NATIVE AD (Now Outside the Box) -->
+    <div class="native-ad-box-outside">
+        <script async="async" data-cfasync="false" src="https://pl28945082.profitablecpmratenetwork.com/0bb58f47ccdd6bc826e8f54ac408f0ae/invoke.js"></script>
+        <div id="container-0bb58f47ccdd6bc826e8f54ac408f0ae"></div>
+    </div>
+
+    <!-- 3. BOTTOM FIXED AD -->
     <div class="ad-bottom-fixed">
         <script type="text/javascript">
             atOptions = { 'key' : '501f153248c74c09ae2d7bf728d506c2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
