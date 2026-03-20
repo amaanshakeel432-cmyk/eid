@@ -14,31 +14,57 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* Styling for the expanding ring */
-.btn-ring {
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0;
-    border: 3px solid #7bff00; /* Same color as button */
-    border-radius: 50px;       /* Matches button shape */
-    pointer-events: none;      /* Ensures clicks go through to the button */
-    z-index: -1;               /* Places it behind the button */
-    animation: ringExpand 1.5s infinite ease-out; /* Continuous animation */
+        /* --- NEW WATERMARK BELOW BUTTON --- */
+        .button-sub-watermark {
+            font-family: 'Signika';
+            font-size: 11px;
+            color: #a5a9a2;
+            opacity: 0.6;
+            margin-top: 27px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10001;
+            pointer-events: none;
+            text-align: center;
+            /* Apply the Pulse Animation */
+    animation: pulseText 2.0s infinite ease-in-out;
 }
 
-/* The expanding animation logic */
-@keyframes ringExpand {
+/* The Pulse Logic */
+@keyframes pulseText {
+    0% {
+        transform: scale(2);
+        text-shadow: 0 0 0px rgba(123, 255, 0, 0);
+        opacity: 0.6;
+    }
+    70% {
+        transform: scale(1.08); /* Grows slightly */
+        text-shadow: 0 0 12px rgba(123, 255, 0, 0.9); /* Adds a green glow */
+        opacity: 1; /* Becomes fully visible */
+    }
     0% {
         transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.4, 1.8); /* Expands outwards */
-        opacity: 0;                  /* Fades out */
+        text-shadow: 0 0 0px rgba(123, 255, 0, 0);
+        opacity: 0.6;
     }
 }
+
+        /* Styling for the expanding ring */
+        .btn-ring {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3px solid #7bff00; 
+            border-radius: 50px;       
+            pointer-events: none;      
+            z-index: -1;               
+            animation: ringExpand 1.5s infinite ease-out; 
+        }
+
+        @keyframes ringExpand {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.4, 1.8); opacity: 0; }
+        }
+
         /* --- DECORATIVE WELCOME SCREEN --- */
         #welcome-screen {
             position: fixed;
@@ -59,10 +85,7 @@
             font-size: clamp(2.2rem, 8vw, 3.8rem);
             margin-bottom: 5px;
             z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
             animation: continuousFloat 3s infinite ease-in-out;
         }
 
@@ -108,11 +131,6 @@
             animation: buttonPulse 1.8s infinite ease-in-out;
         }
 
-        @keyframes ringExpand {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.3, 1.5); opacity: 0; }
-        }
-
         @keyframes buttonPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -141,38 +159,19 @@
         #eidImage { width: 100%; max-width: 100px; border-radius: 10px; margin-bottom: 2px; }
         #mainHeading { font-family: 'Satisfy', cursive; color: var(--golden-heading); font-size: 8.5vw; white-space: nowrap; margin-bottom: 15px; text-shadow: 0 0 12px rgba(255, 193, 7, 0.8); display: inline-block; animation: floatingWave 3s ease-in-out infinite; }
         
-        /* UPDATED WISHING MESSAGE STYLES */
         #familyWishingMessage { 
-            font-family: 'Signika', sans-serif; 
-            font-weight: 800; 
-            color: var(--golden); 
-            font-size: 1.2rem;
-            margin: 15px 0;
-            display: block;
-            animation: gentleFloat 2.5s ease-in-out infinite;
+            font-family: 'Signika', sans-serif; font-weight: 800; color: var(--golden); font-size: 1.2rem;
+            margin: 15px 0; display: block; animation: gentleFloat 2.5s ease-in-out infinite;
         }
 
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+        @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* UPDATED NAME LABEL STYLES */
         .name-prompt-label {
-            display: block; 
-            font-family: 'Signika', sans-serif; 
-            font-size: 1.1rem; 
-            font-weight: 800; 
-            color: var(--golden-heading); /* UPDATED TO MATCH EID MUBARAK COLOR */
-            margin: 25px 0; 
-            animation: continuousUpDown 1.5s ease-in-out infinite;
+            display: block; font-family: 'Signika', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--golden-heading); 
+            margin: 25px 0; animation: continuousUpDown 1.5s ease-in-out infinite;
         }
 
-        @keyframes continuousUpDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
+        @keyframes continuousUpDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         @keyframes floatingWave { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(-1deg); } 75% { transform: translateY(8px) rotate(1deg); } }
         
         .dua-box { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--golden); border-radius: 10px; height: 95px; margin: 8px 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
@@ -201,6 +200,7 @@
         <div class="cloud-deco" style="top: 75%; left: 20%; animation-duration: 12s;">☁️</div>
 
         <script>
+            const welcome = document.getElementById('welcome-screen');
             for (let i = 0; i < 60; i++) {
                 let star = document.createElement('div');
                 star.className = 'splash-star-bg';
@@ -208,18 +208,24 @@
                 star.style.top = Math.random() * 100 + 'vh';
                 star.style.width = star.style.height = Math.random() * 3 + 'px';
                 star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-                document.getElementById('welcome-screen').appendChild(star);
+                welcome.appendChild(star);
             }
         </script>
 
-        <div style="z-index: 10; width: 100%; text-align: center;">
+        <div style="z-index: 10; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center;">
             <h1 class="splash-title"><span class="handshake">🤝</span> Assalamu Alaikum <span class="handshake">🤝</span></h1>
             <p class="splash-subtitle"><i>A Special Gift Awaits You!</i></p>
+            
             <div class="open-btn-container">
-    <div class="btn-ring"></div>
-    <div class="btn-ring" style="animation-delay: 0.5s;"></div> <!-- Delayed ring -->
-    <button class="open-btn" onclick="showMainContent()">➡️Click Here⬅️</button>
-</div>
+                <div class="btn-ring"></div>
+                <div class="btn-ring" style="animation-delay: 0.5s;"></div>
+                <button class="open-btn" onclick="showMainContent()">➡️Click Here⬅️</button>
+            </div>
+
+            <!-- WATERMARK BELOW BUTTON -->
+            <div class="button-sub-watermark">
+                <b><i>© Designed by Amaan Shakeel in <br>Association With Infoma Academy</i></b>
+            </div>
         </div>
     </div>
 
@@ -237,7 +243,6 @@
             <h1 id="mainHeading">🌸 Eid Mubarak 🌸</h1>
             <div id="fromSender" class="sender-badge" style="display:none; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--golden); padding: 4px 18px; border-radius: 20px 4px 20px 4px; font-family: 'Great Vibes', cursive; font-size: 1.4rem; color: #ffffff; margin: 5px auto 10px auto; width: fit-content;"></div>
             
-            <!-- UPDATED TEXT -->
             <p id="familyWishingMessage"><i>🎊 Wishing you and your family <br> a blessed Eid-ul-Fitr! 🕌</i></p>
 
             <div class="dua-box">
@@ -248,7 +253,6 @@
             </div>
 
             <div id="senderSection">
-                <!-- UPDATED LABEL WITH CONTINUOUS UP-DOWN -->
                 <label class="name-prompt-label"><i>👇 ENTER YOUR NAME 👇</i></label>
                 <input type="text" id="senderName" placeholder="Type your name here..." onfocus="playMusic()" onclick="playMusic()">
                 <button id="createShareButton" style="background: linear-gradient(145deg, var(--golden), #a2ff00); color: #143d14; border: none; padding: 14px; border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%; font-size: 1rem; text-transform: uppercase;" onclick="playMusic()">🚀 Create & Share Greeting</button>
