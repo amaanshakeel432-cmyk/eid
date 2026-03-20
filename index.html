@@ -369,7 +369,7 @@
             document.getElementById('shareSection').style.display = 'block';
             
             // Format: ✨ Name sends greeting [Line Break] 🌙 Click here: Link [Two Line Breaks] *Bold Text*
-            const whatsappText = `*✨ ${name}* sends you a special Eid greeting! \n\n🌙 Click here: ${generatedUrl}\n\n*👬Jaldi Aagy Bhejdo Vrna Aam Hojayegi👬*`;
+            const whatsappText = `*✨ ${name}* sends you a special Eid-Ul-Fitr greeting! \n\n🌙 Click here: ${generatedUrl}\n\n_👬Jaldi Aagy Bhejdo Vrna Aam Hojayegi👬_`;
             
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappText)}`, '_blank'); 
         });
