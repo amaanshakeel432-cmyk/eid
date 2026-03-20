@@ -26,28 +26,14 @@
             z-index: 10001;
             pointer-events: none;
             text-align: center;
-            /* Apply the Pulse Animation */
-    animation: pulseText 2.0s infinite ease-in-out;
-}
+            animation: pulseText 2.0s infinite ease-in-out;
+        }
 
-/* The Pulse Logic */
-@keyframes pulseText {
-    0% {
-        transform: scale(2);
-        text-shadow: 0 0 0px rgba(123, 255, 0, 0);
-        opacity: 0.6;
-    }
-    70% {
-        transform: scale(1.08); /* Grows slightly */
-        text-shadow: 0 0 12px rgba(123, 255, 0, 0.9); /* Adds a green glow */
-        opacity: 1; /* Becomes fully visible */
-    }
-    0% {
-        transform: scale(1);
-        text-shadow: 0 0 0px rgba(123, 255, 0, 0);
-        opacity: 0.6;
-    }
-}
+        @keyframes pulseText {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.08); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
 
         /* Styling for the expanding ring */
         .btn-ring {
@@ -157,7 +143,23 @@
         .container { background: rgba(10, 40, 10, 0.85); border: 2px solid var(--golden); border-radius: 15px; padding: 15px; box-shadow: 0 0 25px rgba(123, 255, 0, 0.3); max-width: 450px; width: 95%; position: relative; z-index: 10; margin-top: 5px; }
         
         #eidImage { width: 100%; max-width: 100px; border-radius: 10px; margin-bottom: 2px; }
-        #mainHeading { font-family: 'Satisfy', cursive; color: var(--golden-heading); font-size: 8.5vw; white-space: nowrap; margin-bottom: 15px; text-shadow: 0 0 12px rgba(255, 193, 7, 0.8); display: inline-block; animation: floatingWave 3s ease-in-out infinite; }
+
+        /* UPDATED EID MUBARAK TEXT ANIMATION TO PULSE */
+        #mainHeading { 
+            font-family: 'Satisfy', cursive; 
+            color: var(--golden-heading); 
+            font-size: 8.5vw; 
+            white-space: nowrap; 
+            margin-bottom: 15px; 
+            text-shadow: 0 0 12px rgba(255, 193, 7, 0.8); 
+            display: inline-block; 
+            animation: pulseHeading 1s ease-in-out infinite; 
+        }
+
+        @keyframes pulseHeading {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 12px rgba(255, 193, 7, 0.8); }
+            50% { transform: scale(1.1); text-shadow: 0 0 20px rgba(255, 193, 7, 1); }
+        }
         
         #familyWishingMessage { 
             font-family: 'Signika', sans-serif; font-weight: 800; color: var(--golden); font-size: 1.2rem;
@@ -172,7 +174,6 @@
         }
 
         @keyframes continuousUpDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        @keyframes floatingWave { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(-1deg); } 75% { transform: translateY(8px) rotate(1deg); } }
         
         .dua-box { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--golden); border-radius: 10px; height: 95px; margin: 8px 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .dua-slide { position: absolute; width: 100%; padding: 5px 10px; opacity: 0; transition: 0.6s ease-in-out; }
@@ -189,6 +190,7 @@
 
     <!-- DECORATIVE WELCOME SCREEN -->
     <div id="welcome-screen">
+        <!-- ... (Welcome Screen Content Remains Same) ... -->
         <div class="lantern-container">
             <div class="splash-lantern lantern-red">🏮</div>
             <div class="splash-lantern star-gold" style="animation-delay: 0.8s;">⭐</div>
@@ -222,7 +224,6 @@
                 <button class="open-btn" onclick="showMainContent()">➡️Click Here⬅️</button>
             </div>
 
-            <!-- WATERMARK BELOW BUTTON -->
             <div class="button-sub-watermark">
                 <b><i>© Designed by Amaan Shakeel in <br>Association With Infoma Academy</i></b>
             </div>
@@ -279,6 +280,7 @@
     <audio id="backgroundSong" src="song.mp3" loop preload="auto"></audio> 
     
     <script>
+        // ... (Script Logic Remains Same) ...
         const backgroundSong = document.getElementById('backgroundSong');
 
         function launchPoppers() {
