@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* --- NEW WATERMARK BELOW BUTTON --- */
+        /* --- WATERMARK BELOW BUTTON --- */
         .button-sub-watermark {
             font-family: 'Signika';
             font-size: 11px;
@@ -35,7 +35,6 @@
             100% { transform: scale(1); opacity: 0.6; }
         }
 
-        /* Styling for the expanding ring */
         .btn-ring {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -144,7 +143,6 @@
         
         #eidImage { width: 100%; max-width: 100px; border-radius: 10px; margin-bottom: 2px; }
 
-        /* UPDATED EID MUBARAK TEXT ANIMATION TO PULSE */
         #mainHeading { 
             font-family: 'Satisfy', cursive; 
             color: var(--golden-heading); 
@@ -361,7 +359,7 @@
             });
         }
 
-        // UPDATED LOGIC FOR WHATSAPP SHARING
+        // --- FINAL UPDATED WHATSAPP LOGIC ---
         document.getElementById('createShareButton').addEventListener('click', () => {
             const name = document.getElementById('senderName').value.trim();
             if (!name) return alert("Please type your name! ✍️");
@@ -370,8 +368,8 @@
             document.getElementById('generatedLink').value = generatedUrl;
             document.getElementById('shareSection').style.display = 'block';
             
-            // Text for WhatsApp with 2 line breaks and the custom message
-            const whatsappText = `✨ ${name} sends you a special Eid greeting! 🌙 Click here: ${generatedUrl}\n\n*Jaldi Aagy Bhejdo Vrna Aam Hojayegi🤗*`;
+            // Format: ✨ Name sends greeting [Line Break] 🌙 Click here: Link [Two Line Breaks] *Bold Text*
+            const whatsappText = `✨ ${name} sends you a special Eid greeting! \n\n🌙 Click here: ${generatedUrl}\n\n*Jaldi Aagy Bhejdo Vrna Aam Hojayegi 🤗*`;
             
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappText)}`, '_blank'); 
         });
