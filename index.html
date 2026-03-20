@@ -15,24 +15,30 @@
 
     <style>
         /* Styling for the expanding ring */
-        .btn-ring {
-            position: absolute;
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0;
-            border: 3px solid #7bff00; 
-            border-radius: 50px;       
-            pointer-events: none;      
-            z-index: -1;               
-            animation: ringExpand 1.5s infinite ease-out; 
-        }
+.btn-ring {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    border: 3px solid #7bff00; /* Same color as button */
+    border-radius: 50px;       /* Matches button shape */
+    pointer-events: none;      /* Ensures clicks go through to the button */
+    z-index: -1;               /* Places it behind the button */
+    animation: ringExpand 1.5s infinite ease-out; /* Continuous animation */
+}
 
-        @keyframes ringExpand {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.4, 1.8); opacity: 0; }
-        }
-
+/* The expanding animation logic */
+@keyframes ringExpand {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.4, 1.8); /* Expands outwards */
+        opacity: 0;                  /* Fades out */
+    }
+}
         /* --- DECORATIVE WELCOME SCREEN --- */
         #welcome-screen {
             position: fixed;
@@ -60,7 +66,12 @@
             animation: continuousFloat 3s infinite ease-in-out;
         }
 
-        .handshake { font-family: sans-serif; display: inline-block; }
+        .handshake {
+            text-shadow: none !important;
+            filter: none !important;
+            font-family: sans-serif;
+            display: inline-block;
+        }
 
         .splash-subtitle {
             font-family: 'Signika', sans-serif;
@@ -97,6 +108,11 @@
             animation: buttonPulse 1.8s infinite ease-in-out;
         }
 
+        @keyframes ringExpand {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.3, 1.5); opacity: 0; }
+        }
+
         @keyframes buttonPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -125,11 +141,37 @@
         #eidImage { width: 100%; max-width: 100px; border-radius: 10px; margin-bottom: 2px; }
         #mainHeading { font-family: 'Satisfy', cursive; color: var(--golden-heading); font-size: 8.5vw; white-space: nowrap; margin-bottom: 15px; text-shadow: 0 0 12px rgba(255, 193, 7, 0.8); display: inline-block; animation: floatingWave 3s ease-in-out infinite; }
         
-        #familyWishingMessage { font-family: 'Signika', sans-serif; font-weight: 800; color: var(--golden); font-size: 1.2rem; margin: 15px 0; display: block; animation: gentleFloat 2.5s ease-in-out infinite; }
-        @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        /* UPDATED WISHING MESSAGE STYLES */
+        #familyWishingMessage { 
+            font-family: 'Signika', sans-serif; 
+            font-weight: 800; 
+            color: var(--golden); 
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: block;
+            animation: gentleFloat 2.5s ease-in-out infinite;
+        }
 
-        .name-prompt-label { display: block; font-family: 'Signika', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--golden-heading); margin: 25px 0; animation: continuousUpDown 1.5s ease-in-out infinite; }
-        @keyframes continuousUpDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* UPDATED NAME LABEL STYLES */
+        .name-prompt-label {
+            display: block; 
+            font-family: 'Signika', sans-serif; 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            color: var(--golden-heading); /* UPDATED TO MATCH EID MUBARAK COLOR */
+            margin: 25px 0; 
+            animation: continuousUpDown 1.5s ease-in-out infinite;
+        }
+
+        @keyframes continuousUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
 
         @keyframes floatingWave { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(-1deg); } 75% { transform: translateY(8px) rotate(1deg); } }
         
@@ -174,10 +216,10 @@
             <h1 class="splash-title"><span class="handshake">🤝</span> Assalamu Alaikum <span class="handshake">🤝</span></h1>
             <p class="splash-subtitle"><i>A Special Gift Awaits You!</i></p>
             <div class="open-btn-container">
-                <div class="btn-ring"></div>
-                <div class="btn-ring" style="animation-delay: 0.5s;"></div>
-                <button class="open-btn" onclick="showMainContent()">➡️Click Here⬅️</button>
-            </div>
+    <div class="btn-ring"></div>
+    <div class="btn-ring" style="animation-delay: 0.5s;"></div> <!-- Delayed ring -->
+    <button class="open-btn" onclick="showMainContent()">➡️Click Here⬅️</button>
+</div>
         </div>
     </div>
 
@@ -195,6 +237,7 @@
             <h1 id="mainHeading">🌸 Eid Mubarak 🌸</h1>
             <div id="fromSender" class="sender-badge" style="display:none; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--golden); padding: 4px 18px; border-radius: 20px 4px 20px 4px; font-family: 'Great Vibes', cursive; font-size: 1.4rem; color: #ffffff; margin: 5px auto 10px auto; width: fit-content;"></div>
             
+            <!-- UPDATED TEXT -->
             <p id="familyWishingMessage"><i>🎊 Wishing you and your family <br> a blessed Eid-ul-Fitr! 🕌</i></p>
 
             <div class="dua-box">
@@ -205,6 +248,7 @@
             </div>
 
             <div id="senderSection">
+                <!-- UPDATED LABEL WITH CONTINUOUS UP-DOWN -->
                 <label class="name-prompt-label"><i>👇 ENTER YOUR NAME 👇</i></label>
                 <input type="text" id="senderName" placeholder="Type your name here..." onfocus="playMusic()" onclick="playMusic()">
                 <button id="createShareButton" style="background: linear-gradient(145deg, var(--golden), #a2ff00); color: #143d14; border: none; padding: 14px; border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%; font-size: 1rem; text-transform: uppercase;" onclick="playMusic()">🚀 Create & Share Greeting</button>
@@ -313,22 +357,12 @@
             });
         }
 
-        // --- ADSTERRA INTEGRATION LOGIC ---
         document.getElementById('createShareButton').addEventListener('click', () => {
             const name = document.getElementById('senderName').value.trim();
             if (!name) return alert("Please type your name! ✍️");
-
-            // Load Adsterra Script on click
-            const adScript = document.createElement('script');
-            adScript.src = "https://pl28944942.profitablecpmratenetwork.com/45/dd/4d/45dd4de9b02ca5c7b6eccf7062aabe97.js";
-            document.body.appendChild(adScript);
-
-            // Generate Greeting Logic
             const generatedUrl = `${window.location.origin}${window.location.pathname}?sender=${encodeURIComponent(name)}`;
             document.getElementById('generatedLink').value = generatedUrl;
             document.getElementById('shareSection').style.display = 'block';
-            
-            // Open WhatsApp share
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('✨ ' + name + ' sends you a special Eid greeting! 🌙 Click here: ' + generatedUrl)}`, '_blank'); 
         });
 
